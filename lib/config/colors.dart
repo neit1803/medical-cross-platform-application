@@ -9,9 +9,9 @@ const Color gray3Light = Color(0xFFDCE3EB);
 const Color whiteLight = Color(0xFFFFFFFF);
 
 const Color greenLight = Color(0xFF50C099);
-const Color blueLight = Color(0xFF5DAADEE);
+const Color blueLight = Color(0xFF5DAAEE);
 const Color yellowLight = Color(0xFFFFC565);
-const Color salmonLight = Color(0xFFF987C);
+const Color salmonLight = Color(0xFFF9837C);
 
 const Color primaryTextColorLight = Color(0xFF2B2E48); 
 const Color secondaryTextColorLight = Color(0xFF7D7D7D); 
@@ -31,7 +31,7 @@ const Color whiteDark = Color(0xFFFFFFFF);
 const Color greenDark = Color(0xFF47A785);
 const Color blueDark = Color(0xFF5395CF);
 const Color yellowDark = Color(0xFFEFB047);
-const Color salmonDark = Color(0xFFF987C);
+const Color salmonDark = Color(0xFFF9837C);
 
 const Color primaryTextColorDark = Color(0xFFE3E3E3);
 const Color secondaryTextColorDark = Color(0xFFB8C0CC);

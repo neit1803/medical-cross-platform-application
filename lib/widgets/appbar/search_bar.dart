@@ -30,7 +30,7 @@ class _CustomSearchBar extends State<CustomSearchBar> {
           onChanged: (_) {
             searchBarController.openView();
           },
-          leading: ic_search,
+          leading: Icon(ic_search),
           trailing: <Widget>[
             Tooltip(
               message: 'Change brightness mode',

@@ -23,7 +23,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
           backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
           title: CustomSearchBar(),
           actions: [
-            IconButton(onPressed: (){}, icon: ic_notifi, color: Theme.of(context).colorScheme.onSurface,),
+            IconButton(onPressed: (){}, icon: Icon(ic_notifi), color: Theme.of(context).colorScheme.onSurface,),
             InkWell(
               child: Row(        
                 children: [
@@ -32,6 +32,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
                     child: CircleAvatar(
                       radius: 24,
                       backgroundColor: Colors.white,
+                      backgroundImage: NetworkImage('https://cdn.create.vista.com/api/media/medium/211941270/stock-photo-beautiful-adult-female-doctor-stethoscope-neck-using-digital-tablet-looking?token='),
                     ),
                   ),
                   Column(

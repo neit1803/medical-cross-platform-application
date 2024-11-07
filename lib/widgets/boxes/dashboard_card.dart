@@ -6,7 +6,7 @@ class DashBoardCard extends StatelessWidget {
   IconData icon;
   String title;
   String value;
-  String? growth;
+  double? growth;
   bool dropdown = false;
   Color color;
 
@@ -26,7 +26,7 @@ class DashBoardCard extends StatelessWidget {
     return  Container(
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
@@ -57,11 +57,14 @@ class DashBoardCard extends StatelessWidget {
             children: [
               Align(
               alignment: Alignment.bottomRight,
-              child: Text(
-                "View All   >",
-                style: TextStyle(
-                  color: color,
-                  fontWeight: FontWeight.bold,
+              child: TextButton(
+                onPressed: (){},
+                child: Text(
+                  "View All   >",
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.primary,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
@@ -69,19 +72,25 @@ class DashBoardCard extends StatelessWidget {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: Colors.green[100],
+                  color: growth! > 0? Colors.green[100]: Colors.red[100],
                   borderRadius: BorderRadius.circular(12),
                 ),
+
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Icons.trending_up_outlined, color: Theme.of(context).colorScheme.secondary,),
-                    Text(" $growth", style: TextStyle(color: Theme.of(context).colorScheme.onError),),
+                    growth! > 0?
+                      Icon(ic_increase, color: Theme.of(context).colorScheme.secondary,)
+                      : Icon(ic_decrase, color: Theme.of(context).colorScheme.error,),
+
+                    
+                    Text(" ${(growth!.abs() * 100).toStringAsFixed(0)}%", style: TextStyle(color: growth! > 0? Theme.of(context).colorScheme.onError : Theme.of(context).colorScheme.error),),
                   ],
                 ),
               ),
               if (dropdown)
                 DropdownButton<String>(
+                  style: Theme.of(context).textTheme.bodyLarge,
                   value: "Month",
                   items: ["Day", "Month", "Year"].map((String value) {
                     return DropdownMenuItem<String>(
