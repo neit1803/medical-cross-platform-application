@@ -10,6 +10,7 @@ class MultiLineChart extends StatefulWidget {
 }
 
 class _MultiLineChartState extends State<MultiLineChart> {
+  
   @override
   Widget build(BuildContext context) {
     return LineChart(
@@ -28,13 +29,11 @@ class _MultiLineChartState extends State<MultiLineChart> {
         gridData: FlGridData(
           show: true,
           checkToShowHorizontalLine: (value) {
-            if (value % 1 != 0) 
-              return false;
+            if (num.parse(value.toStringAsFixed(2)) % 1 != 0) {return false;}
             return true;
           },
           checkToShowVerticalLine: (value) {
-            if (value % 1 != 0) 
-              return false;
+            if (num.parse(value.toStringAsFixed(2)) % 1 != 0) {return false;}
             return true;
           },
         ),
@@ -94,11 +93,8 @@ class _MultiLineChartState extends State<MultiLineChart> {
   SideTitles get _bottomTitles => SideTitles(
     showTitles: true,
     getTitlesWidget: (value, meta) {
-       if (value % 1 != 0) {
-        return Container();
-      }
       String text = '';
-      switch (value.toInt()) {
+      switch (value) {
         case 0:
           text = 'Jan';
           break;
@@ -135,9 +131,6 @@ class _MultiLineChartState extends State<MultiLineChart> {
         case 11:
           text = 'Dec';
           break;
-        default:
-          text = '';
-          break;
       }
       return SideTitleWidget(
         axisSide: meta.axisSide,
@@ -149,11 +142,10 @@ class _MultiLineChartState extends State<MultiLineChart> {
   SideTitles get _leftTitles => SideTitles(
     showTitles: true,
     getTitlesWidget: (value, meta) {
-      if (value == 0) {
-        return Text('\$${value.toInt()}');
-      }
+      
       if (value % 1 == 0) {
-        return Text('\$${value.toInt()}k');
+        String text = "\$${value.toInt()}";
+        return Text(value==0? text :text+"k");
       }
       return Container();
     }  
