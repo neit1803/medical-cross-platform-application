@@ -24,8 +24,8 @@ ThemeData lightTheme = ThemeData(
   ),
   scaffoldBackgroundColor: whiteLight,
   textTheme: TextTheme(
-    displayLarge: TextStyle(color: primaryTextColorLight, fontFamily: 'TT Hoves', fontWeight: FontWeight.w500, fontSize: 24),
-    displayMedium: TextStyle(color: primaryTextColorLight, fontFamily: 'TT Hoves', fontWeight: FontWeight.w500, fontSize: 21),
+    displayLarge: TextStyle(color: primaryTextColorLight, fontFamily: 'TT Hoves', fontWeight: FontWeight.bold, fontSize: 24),
+    displayMedium: TextStyle(color: primaryTextColorLight, fontFamily: 'TT Hoves', fontWeight: FontWeight.bold, fontSize: 21),
     titleLarge: TextStyle(color: primaryTextColorLight, fontFamily: 'TT Hoves', fontWeight: FontWeight.w400, fontSize: 16),
     titleMedium: TextStyle(color: primaryTextColorLight, fontFamily: 'TT Hoves', fontWeight: FontWeight.w500, fontSize: 14),
     bodyLarge: TextStyle(color: primaryTextColorLight, fontFamily: 'TT Hoves', fontWeight: FontWeight.w400, fontSize: 14),
@@ -66,3 +66,28 @@ ThemeData darkTheme = ThemeData(
     titleMedium: TextStyle(color: primaryTextColorDark, fontFamily: 'TT Hoves', fontSize: 16),
   ),
 );
+
+// Devices 
+enum Devices {
+  Ios,
+  Android,
+  Linux,
+  Web,
+  Desktop
+}
+
+// Charts
+enum Charts {
+  Pie,
+  Bar,
+  Line
+}
+
+// Base Colors for chart's items
+List<Color> generateDistinctColors(int count) {
+  return List<Color>.generate(count, (index) {
+    final hue = (index * 360 / count) % 360;
+    return HSVColor.fromAHSV(1.0, hue, 0.7, 0.9).toColor();
+  });
+}
+
