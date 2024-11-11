@@ -3,7 +3,8 @@ import 'package:flutter_application_1/config/app_icons.dart';
 import 'package:flutter_application_1/widgets/appbar/search_bar.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
-  CustomAppBar({Key? key}): super(key: key);
+  bool showSearchBar;
+  CustomAppBar({super.key, this.showSearchBar = true});
 
   @override
   // TODO: implement preferredSize
@@ -19,9 +20,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: AppBar(
           toolbarHeight: preferredSize.height,
-          automaticallyImplyLeading: false ,
+          automaticallyImplyLeading: showSearchBar? false : true,
           backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-          title: CustomSearchBar(),
+          title: showSearchBar? CustomSearchBar() : SizedBox.shrink(),
           actions: [
             IconButton(onPressed: (){}, icon: Icon(ic_notifi), color: Theme.of(context).colorScheme.onSurface,),
             InkWell(
