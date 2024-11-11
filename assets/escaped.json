@@ -1,0 +1,969 @@
+{
+    "KeyPair": {
+        "Key": "id",
+        "Value": "phucanbinhphuocdvth17122023"
+    },
+    "Key": "[id, phucanbinhphuocdvth17122023]",
+    "Action": 0,
+    "NewID": null,
+    "id": "phucanbinhphuocdvth17122023",
+    "obdata": {
+        "tongdoanhthu": 10000000.0,
+        "dsluotdichvu": [
+            {
+                "color": "",
+                "value": 1250807.525606469,
+                "title": "Xét Nghiệm 1,250,808%",
+                "ghichu": "XN",
+                "obdata": "Xét Nghiệm",
+                "ma": "XN",
+                "ten": "Xét Nghiệm",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 242722.52469677408,
+                "title": "Khám Bệnh 242,723%",
+                "ghichu": "KHAM",
+                "obdata": "Khám Bệnh",
+                "ma": "KHAM",
+                "ten": "Khám Bệnh",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 442817.25067385443,
+                "title": "Siêu Âm 442,817%",
+                "ghichu": "SA",
+                "obdata": "Siêu Âm",
+                "ma": "SA",
+                "ten": "Siêu Âm",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 251122.49595687332,
+                "title": "Phòng Giường 251,122%",
+                "ghichu": "PG",
+                "obdata": "Phòng Giường",
+                "ma": "PG",
+                "ten": "Phòng Giường",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 597304.58221024263,
+                "title": "CT-Scanner 597,305%",
+                "ghichu": "CT",
+                "obdata": "CT-Scanner",
+                "ma": "CT",
+                "ten": "CT-Scanner",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 255849.05660377358,
+                "title": "Nội Soi 255,849%",
+                "ghichu": "NS",
+                "obdata": "Nội Soi",
+                "ma": "NS",
+                "ten": "Nội Soi",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 23739.083557951482,
+                "title": "Thăm Dò Chức Năng 23,739%",
+                "ghichu": "TDCN",
+                "obdata": "Thăm Dò Chức Năng",
+                "ma": "TDCN",
+                "ten": "Thăm Dò Chức Năng",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 71212.938005390839,
+                "title": "Vật Tư Y Tế 71,213%",
+                "ghichu": "VTYT",
+                "obdata": "Vật Tư Y Tế",
+                "ma": "VTYT",
+                "ten": "Vật Tư Y Tế",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 525795.14824797842,
+                "title": "Thuốc Dịch Vụ 525,795%",
+                "ghichu": "TDV",
+                "obdata": "Thuốc Dịch Vụ",
+                "ma": "TDV",
+                "ten": "Thuốc Dịch Vụ",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 143.39622641509433,
+                "title": "Thuốc Bảo Hiểm 143%",
+                "ghichu": "TBH",
+                "obdata": "Thuốc Bảo Hiểm",
+                "ma": "TBH",
+                "ten": "Thuốc Bảo Hiểm",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 239413.48660204117,
+                "title": "XQuang 239,413%",
+                "ghichu": "XQ",
+                "obdata": "XQuang",
+                "ma": "XQ",
+                "ten": "XQuang",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 138005.39083557951,
+                "title": "Thủ Thuật Ngoại 138,005%",
+                "ghichu": "TTN",
+                "obdata": "Thủ Thuật Ngoại",
+                "ma": "TTN",
+                "ten": "Thủ Thuật Ngoại",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 8086.2533692722373,
+                "title": "Phụ Thu 8,086%",
+                "ghichu": "PTH",
+                "obdata": "Phụ Thu",
+                "ma": "PTH",
+                "ten": "Phụ Thu",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 48517.52021563342,
+                "title": "Gói Dịch Vụ 48,518%",
+                "ghichu": "GOI",
+                "obdata": "Gói Dịch Vụ",
+                "ma": "GOI",
+                "ten": "Gói Dịch Vụ",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 59299.191374663074,
+                "title": "Thủ Thuật Sản Phụ Khoa 59,299%",
+                "ghichu": "TTSPK",
+                "obdata": "Thủ Thuật Sản Phụ Khoa",
+                "ma": "TTSPK",
+                "ten": "Thủ Thuật Sản Phụ Khoa",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 97202.563869198129,
+                "title": "Y Học Cổ Truyền 97,203%",
+                "ghichu": "YHCT",
+                "obdata": "Y Học Cổ Truyền",
+                "ma": "YHCT",
+                "ten": "Y Học Cổ Truyền",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 23180.592991913745,
+                "title": "Phục Hồi Chức Năng 23,181%",
+                "ghichu": "PHCN",
+                "obdata": "Phục Hồi Chức Năng",
+                "ma": "PHCN",
+                "ten": "Phục Hồi Chức Năng",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 291105.12129380053,
+                "title": "Thủ Thuật Răng Hàm Mặt 291,105%",
+                "ghichu": "TTRHM",
+                "obdata": "Thủ Thuật Răng Hàm Mặt",
+                "ma": "TTRHM",
+                "ten": "Thủ Thuật Răng Hàm Mặt",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 13477.088948787063,
+                "title": "Thủ Thuật Tai Mũi Họng 13,477%",
+                "ghichu": "TTTMH",
+                "obdata": "Thủ Thuật Tai Mũi Họng",
+                "ma": "TTTMH",
+                "ten": "Thủ Thuật Tai Mũi Họng",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 2749.3261455525608,
+                "title": "Cấp Cứu 2,749%",
+                "ghichu": "CC",
+                "obdata": "Cấp Cứu",
+                "ma": "CC",
+                "ten": "Cấp Cứu",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 9703.5040431266843,
+                "title": "Thủ Thuật Nhi 9,704%",
+                "ghichu": "TTNHI",
+                "obdata": "Thủ Thuật Nhi",
+                "ma": "TTNHI",
+                "ten": "Thủ Thuật Nhi",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 12938.00539083558,
+                "title": "Thủ Thuật Mắt 12,938%",
+                "ghichu": "TTM",
+                "obdata": "Thủ Thuật Mắt",
+                "ma": "TTM",
+                "ten": "Thủ Thuật Mắt",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 539083.55795148248,
+                "title": "Phẫu Thuật Thủ Thuật 539,084%",
+                "ghichu": "PTTT",
+                "obdata": "Phẫu Thuật Thủ Thuật",
+                "ma": "PTTT",
+                "ten": "Phẫu Thuật Thủ Thuật",
+                "loai": "dvcls",
+                "ten1": "nonedoanhthu"
+            }
+        ],
+        "dsdoanhthu": [
+            {
+                "color": "",
+                "value": 95426312.469366625,
+                "title": "Tổng thực thu",
+                "ghichu": "tong",
+                "obdata": "",
+                "ma": "tong",
+                "ten": "Tổng thực thu",
+                "loai": "doanhthu",
+                "ten1": "doanhthu"
+            },
+            {
+                "color": "",
+                "value": 23202479.6,
+                "title": "Xét Nghiệm",
+                "ghichu": "XN",
+                "obdata": "",
+                "ma": "XN",
+                "ten": "Xét Nghiệm",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 4502502.8331251591,
+                "title": "Khám Bệnh",
+                "ghichu": "KHAM",
+                "obdata": "",
+                "ma": "KHAM",
+                "ten": "Khám Bệnh",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 8214260.0,
+                "title": "Siêu Âm",
+                "ghichu": "SA",
+                "obdata": "",
+                "ma": "SA",
+                "ten": "Siêu Âm",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 4658322.3,
+                "title": "Phòng Giường",
+                "ghichu": "PG",
+                "obdata": "",
+                "ma": "PG",
+                "ten": "Phòng Giường",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 11080000.0,
+                "title": "CT-Scanner",
+                "ghichu": "CT",
+                "obdata": "",
+                "ma": "CT",
+                "ten": "CT-Scanner",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 4746000.0,
+                "title": "Nội Soi",
+                "ghichu": "NS",
+                "obdata": "",
+                "ma": "NS",
+                "ten": "Nội Soi",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 440360.0,
+                "title": "Thăm Dò Chức Năng",
+                "ghichu": "TDCN",
+                "obdata": "",
+                "ma": "TDCN",
+                "ten": "Thăm Dò Chức Năng",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 1321000.0,
+                "title": "Vật Tư Y Tế",
+                "ghichu": "VTYT",
+                "obdata": "",
+                "ma": "VTYT",
+                "ten": "Vật Tư Y Tế",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 9753500.0,
+                "title": "Thuốc Dịch Vụ",
+                "ghichu": "TDV",
+                "obdata": "",
+                "ma": "TDV",
+                "ten": "Thuốc Dịch Vụ",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 2660.0,
+                "title": "Thuốc Bảo Hiểm",
+                "ghichu": "TBH",
+                "obdata": "",
+                "ma": "TBH",
+                "ten": "Thuốc Bảo Hiểm",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 4441120.1764678638,
+                "title": "XQuang",
+                "ghichu": "XQ",
+                "obdata": "",
+                "ma": "XQ",
+                "ten": "XQuang",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 2560000.0,
+                "title": "Thủ Thuật Ngoại",
+                "ghichu": "TTN",
+                "obdata": "",
+                "ma": "TTN",
+                "ten": "Thủ Thuật Ngoại",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 150000.0,
+                "title": "Phụ Thu",
+                "ghichu": "PTH",
+                "obdata": "",
+                "ma": "PTH",
+                "ten": "Phụ Thu",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 900000.0,
+                "title": "Gói Dịch Vụ",
+                "ghichu": "GOI",
+                "obdata": "",
+                "ma": "GOI",
+                "ten": "Gói Dịch Vụ",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 1100000.0,
+                "title": "Thủ Thuật Sản Phụ Khoa",
+                "ghichu": "TTSPK",
+                "obdata": "",
+                "ma": "TTSPK",
+                "ten": "Thủ Thuật Sản Phụ Khoa",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 1803107.5597736253,
+                "title": "Y Học Cổ Truyền",
+                "ghichu": "YHCT",
+                "obdata": "",
+                "ma": "YHCT",
+                "ten": "Y Học Cổ Truyền",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 430000.0,
+                "title": "Phục Hồi Chức Năng",
+                "ghichu": "PHCN",
+                "obdata": "",
+                "ma": "PHCN",
+                "ten": "Phục Hồi Chức Năng",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 5400000.0,
+                "title": "Thủ Thuật Răng Hàm Mặt",
+                "ghichu": "TTRHM",
+                "obdata": "",
+                "ma": "TTRHM",
+                "ten": "Thủ Thuật Răng Hàm Mặt",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 250000.0,
+                "title": "Thủ Thuật Tai Mũi Họng",
+                "ghichu": "TTTMH",
+                "obdata": "",
+                "ma": "TTTMH",
+                "ten": "Thủ Thuật Tai Mũi Họng",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 51000.0,
+                "title": "Cấp Cứu",
+                "ghichu": "CC",
+                "obdata": "",
+                "ma": "CC",
+                "ten": "Cấp Cứu",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 180000.0,
+                "title": "Thủ Thuật Nhi",
+                "ghichu": "TTNHI",
+                "obdata": "",
+                "ma": "TTNHI",
+                "ten": "Thủ Thuật Nhi",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 240000.0,
+                "title": "Thủ Thuật Mắt",
+                "ghichu": "TTM",
+                "obdata": "",
+                "ma": "TTM",
+                "ten": "Thủ Thuật Mắt",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            },
+            {
+                "color": "",
+                "value": 10000000.0,
+                "title": "Phẫu Thuật Thủ Thuật",
+                "ghichu": "PTTT",
+                "obdata": "",
+                "ma": "PTTT",
+                "ten": "Phẫu Thuật Thủ Thuật",
+                "loai": "doanhthu",
+                "ten1": "nonedoanhthu"
+            }
+        ],
+        "dsdoanhthutheobs": [
+            {
+                "color": "",
+                "value": 4784101.1999999993,
+                "title": "NV_74",
+                "ghichu": "NV_74",
+                "obdata": "",
+                "ma": "NV_74",
+                "ten": "Bs. Ngô Minh Cảnh",
+                "loai": "bschidinh",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 7800552.8000000007,
+                "title": "NV22_66",
+                "ghichu": "NV22_66",
+                "obdata": "",
+                "ma": "NV22_66",
+                "ten": "Bs. Đào Xuân Toàn",
+                "loai": "bschidinh",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 4506300.0,
+                "title": "NV501",
+                "ghichu": "NV501",
+                "obdata": "",
+                "ma": "NV501",
+                "ten": "Bs. Lương Trung Kiên",
+                "loai": "bschidinh",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 4801479.8,
+                "title": "NV22_100",
+                "ghichu": "NV22_100",
+                "obdata": "",
+                "ma": "NV22_100",
+                "ten": "BS.CKII. Lưu Trường Bách",
+                "loai": "bschidinh",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 3034600.3,
+                "title": "NV23_77",
+                "ghichu": "NV23_77",
+                "obdata": "",
+                "ma": "NV23_77",
+                "ten": "Bs. lê Thị Thu Thảo",
+                "loai": "bschidinh",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 2804600.0,
+                "title": "NV77",
+                "ghichu": "NV77",
+                "obdata": "",
+                "ma": "NV77",
+                "ten": "BS. Vũ Thị Huyền Trang",
+                "loai": "bschidinh",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 27323941.799999997,
+                "title": "NV22_97",
+                "ghichu": "NV22_97",
+                "obdata": "",
+                "ma": "NV22_97",
+                "ten": "Bs. Nguyễn Ngọc Vương",
+                "loai": "bschidinh",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 401000.0,
+                "title": "NV23_24",
+                "ghichu": "NV23_24",
+                "obdata": "",
+                "ma": "NV23_24",
+                "ten": "Cao Thị Hương",
+                "loai": "bschidinh",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 7900159.6999999993,
+                "title": "NV23_80",
+                "ghichu": "NV23_80",
+                "obdata": "",
+                "ma": "NV23_80",
+                "ten": "Huỳnh Hữu Nghĩa",
+                "loai": "bschidinh",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 12479652.0,
+                "title": "NV64",
+                "ghichu": "NV64",
+                "obdata": "",
+                "ma": "NV64",
+                "ten": "BS. Trần Đức Thiện",
+                "loai": "bschidinh",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 200170.90726891457,
+                "title": "NV23_58",
+                "ghichu": "NV23_58",
+                "obdata": "",
+                "ma": "NV23_58",
+                "ten": "Bs. Trần Ngọc Minh Phương",
+                "loai": "bschidinh",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 2242877.6620977339,
+                "title": "NV23_76",
+                "ghichu": "NV23_76",
+                "obdata": "",
+                "ma": "NV23_76",
+                "ten": "Trịnh Duy Thắng",
+                "loai": "bschidinh",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 2515416.0,
+                "title": "NV22_03",
+                "ghichu": "NV22_03",
+                "obdata": "",
+                "ma": "NV22_03",
+                "ten": "Trương Thanh Tú",
+                "loai": "bschidinh",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 8840460.3,
+                "title": "NV23_46",
+                "ghichu": "NV23_46",
+                "obdata": "",
+                "ma": "NV23_46",
+                "ten": "Bs. Nguyễn Minh Khánh",
+                "loai": "bschidinh",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 5421000.0,
+                "title": "NV",
+                "ghichu": "NV",
+                "obdata": "",
+                "ma": "NV",
+                "ten": "Phạm Văn Sơn",
+                "loai": "bschidinh",
+                "ten1": "doctor"
+            }
+        ],
+        "dsdoanhthutheobsthuchien": [
+            {
+                "color": "",
+                "value": 22887479.6,
+                "title": "NV12",
+                "ghichu": "NV12",
+                "obdata": "",
+                "ma": "NV12",
+                "ten": "CN. Nguyễn Thị Ngọc Trinh",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 213280.0,
+                "title": "NV_74",
+                "ghichu": "NV_74",
+                "obdata": "",
+                "ma": "NV_74",
+                "ten": "Bs. Ngô Minh Cảnh",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 3222130.0,
+                "title": "NV32",
+                "ghichu": "NV32",
+                "obdata": "",
+                "ma": "NV32",
+                "ten": "BS. Phạm Ngọc Quang",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 15570680.176467862,
+                "title": "NV11",
+                "ghichu": "NV11",
+                "obdata": "",
+                "ma": "NV11",
+                "ten": "BS. Nguyễn Văn Cao",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 3500000.0,
+                "title": "NV22_84",
+                "ghichu": "NV22_84",
+                "obdata": "",
+                "ma": "NV22_84",
+                "ten": "BS.CKI Tạ Minh Vương",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 400000.0,
+                "title": "NV501",
+                "ghichu": "NV501",
+                "obdata": "",
+                "ma": "NV501",
+                "ten": "Bs. Lương Trung Kiên",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 493280.0,
+                "title": "NV22_100",
+                "ghichu": "NV22_100",
+                "obdata": "",
+                "ma": "NV22_100",
+                "ten": "BS.CKII. Lưu Trường Bách",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 580000.0,
+                "title": "NV23_77",
+                "ghichu": "NV23_77",
+                "obdata": "",
+                "ma": "NV23_77",
+                "ten": "Bs. lê Thị Thu Thảo",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 915272.0,
+                "title": "NV22_97",
+                "ghichu": "NV22_97",
+                "obdata": "",
+                "ma": "NV22_97",
+                "ten": "Bs. Nguyễn Ngọc Vương",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 664190.0,
+                "title": "NV23_24",
+                "ghichu": "NV23_24",
+                "obdata": "",
+                "ma": "NV23_24",
+                "ten": "Cao Thị Hương",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 4227940.0,
+                "title": "NV23_45",
+                "ghichu": "NV23_45",
+                "obdata": "",
+                "ma": "NV23_45",
+                "ten": "BS. Nguyễn Văn Kiên",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 541752.0,
+                "title": "NV64",
+                "ghichu": "NV64",
+                "obdata": "",
+                "ma": "NV64",
+                "ten": "BS. Trần Đức Thiện",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 170.90726891458326,
+                "title": "NV23_58",
+                "ghichu": "NV23_58",
+                "obdata": "",
+                "ma": "NV23_58",
+                "ten": "Bs. Trần Ngọc Minh Phương",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 315272.0,
+                "title": "NV22_66",
+                "ghichu": "NV22_66",
+                "obdata": "",
+                "ma": "NV22_66",
+                "ten": "Bs. Đào Xuân Toàn",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 1259.925856245136,
+                "title": "NV23_76",
+                "ghichu": "NV23_76",
+                "obdata": "",
+                "ma": "NV23_76",
+                "ten": "Trịnh Duy Thắng",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 160624.0,
+                "title": "NV22_03",
+                "ghichu": "NV22_03",
+                "obdata": "",
+                "ma": "NV22_03",
+                "ten": "Trương Thanh Tú",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 1246000.0,
+                "title": "NV53",
+                "ghichu": "NV53",
+                "obdata": "",
+                "ma": "NV53",
+                "ten": "Nguyễn Kỳ Sa",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 342960.0,
+                "title": "NV23_46",
+                "ghichu": "NV23_46",
+                "obdata": "",
+                "ma": "NV23_46",
+                "ten": "Bs. Nguyễn Minh Khánh",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 156640.0,
+                "title": "NV23_80",
+                "ghichu": "NV23_80",
+                "obdata": "",
+                "ma": "NV23_80",
+                "ten": "Huỳnh Hữu Nghĩa",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 0.0,
+                "title": "NV",
+                "ghichu": "NV",
+                "obdata": "",
+                "ma": "NV",
+                "ten": "Phạm Văn Sơn",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            },
+            {
+                "color": "",
+                "value": 100000.0,
+                "title": "NV77",
+                "ghichu": "NV77",
+                "obdata": "",
+                "ma": "NV77",
+                "ten": "BS. Vũ Thị Huyền Trang",
+                "loai": "bsthuchien",
+                "ten1": "doctor"
+            }
+        ],
+        "dstilebacsicanlamsang": "",
+        "status": 0,
+        "statustext": "",
+        "dsbenhvien": [
+            {
+                "ma": "phucanbinhphuoc",
+                "ten": "BV Phúc An Bình Phước"
+            },
+            {
+                "ma": "huongphuc",
+                "ten": "Hưởng Phúc"
+            },
+            {
+                "ma": "anphuoc1",
+                "ten": "An Phước 1"
+            },
+            {
+                "ma": "phucantayninh",
+                "ten": "Phúc An Tây Ninh"
+            },
+            {
+                "ma": "phucan3binhduong",
+                "ten": "Phúc An 3 Bình Dương"
+            }
+        ]
+    },
+    "ngay": "2023-12-17T00:00:00",
+    "phanloai": "dvth",
+    "obtag": null,
+    "donvi": "phucanbinhphuoc",
+    "chinhanh": null,
+    "ngayupdate": null,
+    "FieldHaveAvaliable": null,
+    "IsNotEdit": false,
+    "sysSTT": 0,
+    "_IsAdd": false
+}
