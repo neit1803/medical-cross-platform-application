@@ -84,10 +84,11 @@ enum Charts {
 }
 
 // Base Colors for chart's items
-List<Color> generateDistinctColors(int count) {
-  return List<Color>.generate(count, (index) {
+List<String> generateDistinctColors(int count) {
+  return List<String>.generate(count, (index) {
     final hue = (index * 360 / count) % 360;
-    return HSVColor.fromAHSV(1.0, hue, 0.7, 0.9).toColor();
+    final color = HSVColor.fromAHSV(1.0, hue, 0.7, 0.9).toColor();
+    return '#${color.value.toRadixString(16).padLeft(8, '0').toUpperCase()}';
   });
 }
 

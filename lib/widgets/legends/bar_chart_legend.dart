@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 class BarChartLegend extends StatefulWidget {
   List<double> values;
   List<String> labels;
-  List<Color> colors;
+  List<String> colors;
   double totalValue;
 
   BarChartLegend({super.key, required this.values, required this.labels, required this.colors, required this.totalValue});
@@ -34,7 +34,7 @@ class _BarChartLegendState extends State<BarChartLegend> {
             children: [
               CircleAvatar(
                 radius: 5,
-                backgroundColor: widget.colors[index],
+                backgroundColor: Color(int.parse(widget.colors[index].replaceFirst('#', ''), radix: 16)),
               ),
               const SizedBox(width: 8),
               Text(

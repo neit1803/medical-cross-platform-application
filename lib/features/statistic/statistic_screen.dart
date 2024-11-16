@@ -1,49 +1,39 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/services/api_service.dart';
 import 'package:flutter_application_1/widgets/appbar/app_bar.dart';
 import 'package:flutter_application_1/widgets/boxes/statistic_chart_card.dart';
-import 'package:flutter/services.dart' show rootBundle;
 
 class StatisticScreen extends StatefulWidget {
-  BuildContext? context;
-  Map? data;
-  var chart;
-  StatisticScreen({super.key, this.data, required this.chart});
+  final dynamic chart;
+  const StatisticScreen({super.key, required this.chart});
 
   @override
   State<StatisticScreen> createState() => _StatisticScreenState();
 }
 
 class _StatisticScreenState extends State<StatisticScreen> {
-
-  Future<void> loadJsonAsset() async { 
-    final String jsonString = await rootBundle.loadString('assets/escaped.json'); 
-    final jsonData = jsonDecode(jsonString); 
-    setState(() {
-      widget.data = jsonData;
-    });
-  }
-
-  
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    loadJsonAsset();
-  }
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: CustomAppBar(showSearchBar: false,),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30), 
-          child: widget.data != null ? 
-          StatisticChartCard(data: widget.data!, chart: widget.chart)
-          : const Center(child: CircularProgressIndicator()),
+      appBar: CustomAppBar(showSearchBar: false),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+        child: FutureBuilder<Map<String, dynamic>>(
+          future: ApiService.fetchData(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (snapshot.hasError) {
+              return Center(child: Text('Error: ${snapshot.error}'));
+            }
+            if (snapshot.hasData) {
+              final data = snapshot.data!;
+              return StatisticChartCard(data: data, chart: widget.chart);
+            }
+            return const Center(child: Text('No data available.'));
+          },
         ),
       ),
     );

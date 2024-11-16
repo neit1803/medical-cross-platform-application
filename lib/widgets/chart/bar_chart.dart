@@ -1,22 +1,25 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/services/chart_service.dart';
 import 'package:flutter_application_1/widgets/legends/bar_chart_legend.dart';
 import 'dart:math';
 
 import 'package:flutter_application_1/widgets/legends/indicator.dart';
 
 class BarChartCard extends StatefulWidget {
-  List<double> values;
-  List<String> labels;
-  List<Color> colors;
-  double totalValue;
+  List<dynamic> data;
   
-  BarChartCard({super.key, required this.values, required this.labels, required this.colors, required this.totalValue});
+  BarChartCard({super.key, required this.data});
 
   @override
   State<BarChartCard> createState() => _BarChartCardState();
 }
 class _BarChartCardState extends State<BarChartCard> {
+  List<double> values = List.filled(4, 0.0);
+  List<String> labels = List.filled(4, "");
+  List<String> colors = List.filled(4, "");
+  double totalValue = 0.0;
+  
   double highestPercentage = 0;
   int touchedIndex = -1;
   
@@ -24,7 +27,20 @@ class _BarChartCardState extends State<BarChartCard> {
   @override
   void initState() {
     // TODO: implement initState
-    highestPercentage = widget.values.reduce(max) / widget.totalValue;
+    values = ChartService()
+      .getValues(widget.data)
+      .map((e) => e is double ? e : double.tryParse(e.toString()) ?? 0.0)
+      .toList();
+    labels = ChartService()
+        .getLabels(widget.data)
+        .map((e) => e.toString())
+        .toList();
+    colors = ChartService()
+        .getColors(widget.data)
+        .map((e) => e.toString())
+        .toList();
+    totalValue = ChartService.calculateTotalValue(values);
+    highestPercentage = (values  as List<double>).reduce(max) / totalValue;
     super.initState();
   }
  
@@ -59,11 +75,11 @@ class _BarChartCardState extends State<BarChartCard> {
                     fitInsideVertically: true,
                     fitInsideHorizontally: true,
                     getTooltipItem: (group, groupIndex, rod, rodIndex) {
-                      final text = double.parse(((widget.values[groupIndex] / widget.totalValue) * 100).toStringAsFixed(1));
+                      final text = double.parse(((values[groupIndex] / totalValue) * 100).toStringAsFixed(1));
                       return BarTooltipItem(
                         // "${widget.values[groupIndex]}", 
                         "${text} \%",
-                        TextStyle(color: widget.colors[groupIndex]),
+                        TextStyle(color: Color(int.parse(colors[groupIndex].replaceFirst('#', ''), radix: 16))),
                       );
                     },
                   ),
@@ -97,10 +113,10 @@ class _BarChartCardState extends State<BarChartCard> {
               top: 10,
               right: 10,
               child: BarChartLegend(
-                colors: widget.colors,
-                labels: widget.labels,
-                values: widget.values,
-                totalValue: widget.totalValue,
+                colors: colors,
+                labels: labels,
+                values: values,
+                totalValue: totalValue,
               ),
             ),
           ],
@@ -110,10 +126,10 @@ class _BarChartCardState extends State<BarChartCard> {
   }
 
   List<BarChartGroupData> showingSections() {
-    return List.generate(widget.values.length, (index) {
+    return List.generate(values.length, (index) {
     final isTouched = index == touchedIndex;
     final fontSize = isTouched ? 16.0 : 12.0;
-    final itemVal = double.parse(((widget.values[index] / widget.totalValue) * 100).toStringAsFixed(1));
+    final itemVal = double.parse(((values[index] / totalValue) * 100).toStringAsFixed(1));
     final toY = isTouched? (itemVal + 3) : itemVal;
     // const shadows = [Shadow(color: Colors.black, blurRadius: 2)];
     // double percentage = widget.values[index] / widget.totalValue;
@@ -123,7 +139,7 @@ class _BarChartCardState extends State<BarChartCard> {
           BarChartRodData(
             toY: toY,
             width: 50,
-            color: widget.colors[index],
+            color: Color(int.parse(colors[index].replaceFirst('#', ''), radix: 16)),
             borderRadius: BorderRadius.zero,
           ),
         ]
@@ -165,7 +181,7 @@ class _BarChartCardState extends State<BarChartCard> {
       return SideTitleWidget(
         axisSide: meta.axisSide,
         child: Text(
-          '${widget.labels[value.toInt()]}',
+          '${labels[value.toInt()]}',
           style: TextStyle(
             color: Colors.black, 
             fontWeight: FontWeight.bold,  

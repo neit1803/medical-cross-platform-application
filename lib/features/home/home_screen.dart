@@ -1,32 +1,18 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/config/app_icons.dart';
 import 'package:flutter_application_1/widgets/appbar/app_bar.dart';
 import 'package:flutter_application_1/widgets/boxes/revenue_chart_card.dart';
 import 'package:flutter_application_1/widgets/boxes/dashboard_card.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter/services.dart' show rootBundle;
 
 class HomeScreen extends StatefulWidget {
-  dynamic? data;
-
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
-  Future<void> loadJsonAsset() async { 
-    final String jsonString = await rootBundle.loadString('assets/escaped.json'); 
-    final jsonData = jsonDecode(jsonString); 
-    setState(() {
-      widget.data = jsonData;
-    });
-  }
-
   String formatVND(int value) {
     final format = NumberFormat('#,##0');
     return '${format.format(value)} VND';
@@ -35,7 +21,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    loadJsonAsset();
   }
 
   @override
@@ -81,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: CustomAppBar(),      
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
           child: Column(
             children: [
               GridView.builder(
@@ -105,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
               ),
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
               RevenueChart(height: MediaQuery.sizeOf(context).height * 0.6, context: this.context,),
             ],
           ),

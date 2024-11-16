@@ -1,14 +1,12 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/services/chart_service.dart';
 import 'package:flutter_application_1/widgets/legends/pie_chart_legend.dart';
 
 class PieChartCard extends StatefulWidget {
-  List<double> values;
-  List<String> labels;
-  List<Color> colors;
-  double totalValue;
+  List<dynamic> data;
 
-  PieChartCard({super.key, required this.values, required this.labels, required this.colors, required this.totalValue});
+  PieChartCard({super.key, required this.data});
 
   @override
   State<PieChartCard> createState() => _PieChartCard();
@@ -16,6 +14,30 @@ class PieChartCard extends StatefulWidget {
 
 class _PieChartCard extends State<PieChartCard> {
   int touchedIndex = -1;
+  double totalValue = 0.0;
+
+  List<double> values = List.filled(4, 0.0);
+  List<String> labels = List.filled(4, "");
+  List<Color> colors = List.filled(4, Colors.grey);
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    values = ChartService()
+      .getValues(widget.data)
+      .map((e) => e is double ? e : double.tryParse(e.toString()) ?? 0.0)
+      .toList();
+    labels = ChartService()
+        .getLabels(widget.data)
+        .map((e) => e.toString())
+        .toList();
+    colors = ChartService()
+      .getColors(widget.data)
+      .map((e) => ChartService.parseColor(e.toString()))
+      .toList();
+    totalValue = ChartService.calculateTotalValue(values);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +80,7 @@ class _PieChartCard extends State<PieChartCard> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                PieChartLegend(values: widget.values, labels: widget.labels, colors: widget.colors, totalValue: widget.totalValue)
+                PieChartLegend(values: values as List<double>, labels: labels as List<String>, colors: colors as List<Color>, totalValue: totalValue)
               ],
             ),
           ),
@@ -68,15 +90,15 @@ class _PieChartCard extends State<PieChartCard> {
   }
 
   List<PieChartSectionData> showingSections() {
-    return List.generate(widget.values.length, (i) {
+    return List.generate(values.length, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 16.0 : 0.0;
       final radius = isTouched ? 60.0 : 50.0;
       const shadows = [Shadow(color: Colors.black, blurRadius: 2)];
-      double percentage = widget.values[i] / widget.totalValue;
+      double percentage = values[i] / totalValue;
       return PieChartSectionData(
-        color: widget.colors[i],
-        value: widget.values[i],
+        color: colors[i],
+        value: values[i],
         title: '${(percentage * 100).toStringAsFixed(1)}%',
         radius: radius,
         titleStyle: TextStyle(
