@@ -3,8 +3,10 @@ import 'package:flutter_application_1/config/app_icons.dart';
 import 'package:flutter_application_1/config/colors.dart';
 
 class CustomSearchBar extends StatefulWidget {
+  bool isLightTheme;
+  final Function(bool) onThemeChanged;
 
-  CustomSearchBar({super.key});
+  CustomSearchBar({super.key, required this.isLightTheme, required this.onThemeChanged});
 
   @override
   State<CustomSearchBar> createState() => _CustomSearchBar();
@@ -13,11 +15,12 @@ class CustomSearchBar extends StatefulWidget {
 class _CustomSearchBar extends State<CustomSearchBar> {
   @override
   Widget build(BuildContext context) {
-    bool isDark = false;
     return SearchAnchor(
       builder: (BuildContext ctx, SearchController searchBarController) {
         return SearchBar(
-          shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadiusDirectional.circular(12))),
+          shape: WidgetStatePropertyAll(
+            RoundedRectangleBorder(borderRadius: BorderRadiusDirectional.circular(12)),
+          ),
           backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.surface),
           side: WidgetStatePropertyAll(BorderSide(width: 0.5, color: gray1Light)),
           elevation: const WidgetStatePropertyAll<double>(0),
@@ -36,32 +39,32 @@ class _CustomSearchBar extends State<CustomSearchBar> {
               message: 'Change brightness mode',
               textStyle: Theme.of(context).textTheme.bodySmall,
               child: IconButton(
-                isSelected: isDark,
+                isSelected: widget.isLightTheme,
                 onPressed: () {
                   setState(() {
-                    isDark = !isDark;
+                    widget.isLightTheme = !widget.isLightTheme;
                   });
+                  widget.onThemeChanged(widget.isLightTheme);
                 },
-                icon: const Icon(Icons.wb_sunny_outlined),
-                selectedIcon: const Icon(Icons.brightness_2_outlined),
+                icon: widget.isLightTheme? const Icon(Icons.wb_sunny_outlined) : const Icon(Icons.brightness_2_outlined),
               ),
             )
           ],
         );
       },
-      suggestionsBuilder: (BuildContext ctx, SearchController search_bar_controller) {
+      suggestionsBuilder: (BuildContext ctx, SearchController searchBarController) {
         return List<ListTile>.generate(3, (int index) {
           final String item = 'item $index';
           return ListTile(
             title: Text(item),
             onTap: () {
-              setState() {
-                search_bar_controller.closeView(item);
-              }
+              setState(() {
+                searchBarController.closeView(item);
+              });
             },
           );
         });
-      }    
+      },
     );
   }
 }

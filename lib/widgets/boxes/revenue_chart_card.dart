@@ -4,9 +4,10 @@ import 'package:flutter_application_1/features/statistic/statistic_screen.dart';
 import 'package:flutter_application_1/widgets/chart/multi_lines_chart.dart';
 
 class RevenueChart extends StatefulWidget {
+  bool isLightTheme;
   double height;
   BuildContext context;
-  RevenueChart({super.key, required this.context, required this.height});
+  RevenueChart({super.key, required this.context, required this.height, required this.isLightTheme});
 
   @override
   State<RevenueChart> createState() => _RevenueChartState();
@@ -44,7 +45,7 @@ class _RevenueChartState extends State<RevenueChart> {
                      print("Clicked - Navigating to StatisticScreen");
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => StatisticScreen(chart: Charts.Pie)),
+                      MaterialPageRoute(builder: (context) => StatisticScreen(chart: Charts.Pie, isLightTheme: widget.isLightTheme,),),
                     );
                   },
                   child: Text(

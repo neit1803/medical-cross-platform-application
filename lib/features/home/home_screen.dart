@@ -6,7 +6,9 @@ import 'package:flutter_application_1/widgets/boxes/dashboard_card.dart';
 import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final Function(bool) onThemeChanged;
+  bool isLightTheme;
+  HomeScreen({super.key, required this.isLightTheme, required this.onThemeChanged});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -63,7 +65,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: CustomAppBar(),      
+      appBar: CustomAppBar(
+        onThemeToggle: (bool isLightTheme) {
+          widget.onThemeChanged(isLightTheme);
+        },
+        isLightTheme: widget.isLightTheme,
+      ),      
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
@@ -91,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
               const SizedBox(height: 30,),
-              RevenueChart(height: MediaQuery.sizeOf(context).height * 0.6, context: this.context,),
+              RevenueChart(height: MediaQuery.sizeOf(context).height * 0.6, context: this.context, isLightTheme: widget.isLightTheme,),
             ],
           ),
         ),

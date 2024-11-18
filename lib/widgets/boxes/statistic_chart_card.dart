@@ -73,6 +73,17 @@ class _StatisticChartCardState extends State<StatisticChartCard> {
     );
   }
 
+  void _onPageChanged(int index) {
+    setState(() {
+      currIdx = index;
+    });
+    _pageController.animateToPage(
+      index, 
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeInOut,             
+    );
+  }
+
   @override
   void dispose() {
     _pageController.dispose();
@@ -118,6 +129,7 @@ class _StatisticChartCardState extends State<StatisticChartCard> {
               ],
             ),
             child: ExpandablePageView.builder(
+              onPageChanged: _onPageChanged,
               itemCount: 4,
               controller: _pageController,
               itemBuilder: (context, index) {
@@ -152,10 +164,10 @@ class _StatisticChartCardState extends State<StatisticChartCard> {
                     ),
                     widget.chart == Charts.Pie
                     ? PieChartCard(
-                        data: dataset[currIdx],
+                        data: dataset[index],
                       )
                     : BarChartCard(
-                        data: dataset[currIdx],
+                        data: dataset[index],
                       ),
                   ],
                 );

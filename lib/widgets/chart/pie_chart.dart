@@ -22,7 +22,6 @@ class _PieChartCard extends State<PieChartCard> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     values = ChartService()
       .getValues(widget.data)
@@ -67,7 +66,8 @@ class _PieChartCard extends State<PieChartCard> {
                 sectionsSpace: 5,
                 centerSpaceRadius: MediaQuery.of(context).size.height * 0.25,
                 sections: showingSections(),
-              ),
+              )
+              
             ),
           ),
         ),

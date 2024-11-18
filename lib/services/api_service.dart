@@ -38,7 +38,7 @@ class ApiService {
       resp['dsdoanhthutheobsthuchien'] = getRevenueByPerformingDoctorList(parsedObdata);
       resp['dstilebacsicanlamsang'] = getServiceIncomeList(parsedObdata);
       resp['dsbenhvien'] = getHospitals(parsedObdata);
-      resp['ngay'] = getDate(parsedObdata);
+      resp['ngay'] = getDate(decodedBodyData);
 
       return resp;
     } on FormatException catch (e) {

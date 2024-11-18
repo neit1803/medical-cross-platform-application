@@ -4,8 +4,9 @@ import 'package:flutter_application_1/widgets/appbar/app_bar.dart';
 import 'package:flutter_application_1/widgets/boxes/statistic_chart_card.dart';
 
 class StatisticScreen extends StatefulWidget {
+  bool isLightTheme;
   final dynamic chart;
-  const StatisticScreen({super.key, required this.chart});
+  StatisticScreen({super.key, required this.chart, required this.isLightTheme});
 
   @override
   State<StatisticScreen> createState() => _StatisticScreenState();
@@ -16,7 +17,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: CustomAppBar(showSearchBar: false),
+      appBar: CustomAppBar(showSearchBar: false, isLightTheme: widget.isLightTheme, onThemeToggle: (value){},),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         child: FutureBuilder<Map<String, dynamic>>(

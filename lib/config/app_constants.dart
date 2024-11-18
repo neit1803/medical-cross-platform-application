@@ -52,18 +52,18 @@ ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
   ),
   appBarTheme: AppBarTheme(
-    backgroundColor: gray2Dark,
+    backgroundColor: gray3Dark,
     foregroundColor: whiteDark,
   ),
   scaffoldBackgroundColor: gray1Dark,
   textTheme: TextTheme(
-    displayLarge: TextStyle(color: primaryTextColorDark, fontFamily: 'TT Hoves', fontWeight: FontWeight.w500, fontSize: 32),
-    displayMedium: TextStyle(color: primaryTextColorDark, fontFamily: 'TT Hoves', fontWeight: FontWeight.w400, fontSize: 28),
-    titleLarge: TextStyle(color: primaryTextColorDark, fontFamily: 'TT Hoves', fontWeight: FontWeight.w500, fontSize: 22),
-    bodyLarge: TextStyle(color: primaryTextColorDark, fontFamily: 'TT Hoves', fontSize: 10),
-    bodyMedium: TextStyle(color: primaryTextColorDark, fontFamily: 'TT Hoves', fontSize: 14),
-    labelLarge: TextStyle(color: primaryTextColorDark, fontFamily: 'TT Hoves', fontSize: 12),
-    titleMedium: TextStyle(color: primaryTextColorDark, fontFamily: 'TT Hoves', fontSize: 16),
+    displayLarge: TextStyle(color: primaryTextColorDark, fontFamily: 'TT Hoves', fontWeight: FontWeight.bold, fontSize: 24),
+    displayMedium: TextStyle(color: primaryTextColorDark, fontFamily: 'TT Hoves', fontWeight: FontWeight.bold, fontSize: 21),
+    titleLarge: TextStyle(color: primaryTextColorDark, fontFamily: 'TT Hoves', fontWeight: FontWeight.w400, fontSize: 16),
+    titleMedium: TextStyle(color: primaryTextColorDark, fontFamily: 'TT Hoves', fontWeight: FontWeight.w500, fontSize: 14),
+    bodyLarge: TextStyle(color: primaryTextColorDark, fontFamily: 'TT Hoves', fontWeight: FontWeight.w400, fontSize: 14),
+    bodyMedium: TextStyle(color: primaryTextColorDark, fontFamily: 'TT Hoves', fontWeight: FontWeight.w400, fontSize: 12),
+    labelLarge: TextStyle(color: primaryTextColorDark, fontFamily: 'TT Hoves', fontWeight: FontWeight.w500, fontSize: 10),
   ),
 );
 

@@ -32,6 +32,7 @@ dependencies:
   multi_split_view: ^3.6.0
   intl: ^0.18.0
   expandable_page_view: ^1.0.17
+  shared_preferences: ^2.3.3
   flutter:
     sdk: flutter
 
