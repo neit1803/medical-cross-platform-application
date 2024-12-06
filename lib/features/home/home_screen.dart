@@ -3,6 +3,7 @@ import 'package:flutter_application_1/config/app_icons.dart';
 import 'package:flutter_application_1/widgets/appbar/app_bar.dart';
 import 'package:flutter_application_1/widgets/boxes/revenue_chart_card.dart';
 import 'package:flutter_application_1/widgets/boxes/dashboard_card.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -29,15 +30,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
-    final double itemWidth = size.width / 2;
-
     final List<Map> dashboard_card_data = [
       {
         "icon": ic_ssers_01,
         "title": "Doctors",
         "value": "5 234",
-        "dropdown": true,
         "color": Theme.of(context).colorScheme.primary
       },
       {
@@ -63,6 +60,8 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     ];
 
+    final isSmall = MediaQuery.of(context).size.width < 1200;
+    
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: CustomAppBar(
@@ -76,29 +75,32 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
           child: Column(
             children: [
-              GridView.builder(
-                itemCount: 4,
-                shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
-                  childAspectRatio: (itemWidth / itemHeight),
-                  mainAxisSpacing: 30,
-                  crossAxisSpacing: 30,
-                ),
-                itemBuilder: (BuildContext context, int index) {
-                  return DashBoardCard(
-                    context : this.context,
-                    icon: dashboard_card_data[index]['icon'],
-                    title: dashboard_card_data[index]['title'],
-                    value: dashboard_card_data[index]['value'],
-                    growth: dashboard_card_data[index]['growth'],
-                    dropdown: dashboard_card_data[index]['dropdown'] != null,
-                    color: dashboard_card_data[index]['color'],
-                  );
-                },
+              LayoutGrid(
+                columnGap: 30,
+                rowGap: 30,
+                columnSizes: isSmall? [1.fr, 1.fr] : [1.fr, 1.fr, 1.fr, 1.fr],
+                rowSizes: isSmall?
+                  [auto, auto] :
+                  [auto],
+                  children: List.generate(dashboard_card_data.length, (index) {
+                    return DashBoardCard(
+                      context : this.context,
+                      icon: dashboard_card_data[index]['icon'],
+                      title: dashboard_card_data[index]['title'],
+                      value: dashboard_card_data[index]['value'],
+                      growth: dashboard_card_data[index]['growth'],
+                      dropdown: dashboard_card_data[index]['dropdown'] != null,
+                      color: dashboard_card_data[index]['color'],
+                      isSmall: isSmall,
+                    );
+                  }),
               ),
               const SizedBox(height: 30,),
-              RevenueChart(height: MediaQuery.sizeOf(context).height * 0.6, context: this.context, isLightTheme: widget.isLightTheme,),
+              SizedBox(
+                height: MediaQuery.sizeOf(context).height * 0.6,
+                width: MediaQuery.sizeOf(context).width * 1,
+                child: RevenueChart(context: this.context, isLightTheme: widget.isLightTheme,),
+              ),
             ],
           ),
         ),

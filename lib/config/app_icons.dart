@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 const IconData ic_home = CupertinoIcons.home;
 const IconData ic_grid_01 = CupertinoIcons.square_grid_2x2;
+const IconData ic_arrow_up = CupertinoIcons.chevron_compact_up;
+const IconData ic_arrow_down = CupertinoIcons.chevron_compact_down;
 const IconData ic_arrow_right = CupertinoIcons.right_chevron;
 const IconData ic_arrow_left = CupertinoIcons.left_chevron;
 const IconData ic_search = CupertinoIcons.search;
@@ -17,5 +19,6 @@ const IconData ic_light_mode = CupertinoIcons.sun_min;
 const IconData ic_dark_mode = CupertinoIcons.moon;
 const IconData ic_increase = Icons.trending_up_outlined;
 const IconData ic_decrase = Icons.trending_down_outlined;
+
 
 

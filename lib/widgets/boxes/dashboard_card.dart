@@ -9,6 +9,7 @@ class DashBoardCard extends StatefulWidget {
   double? growth;
   bool dropdown = false;
   Color color;
+  bool isSmall;
 
   DashBoardCard({
     super.key, 
@@ -18,7 +19,8 @@ class DashBoardCard extends StatefulWidget {
     required this.value,    
     required this.color,
     this.growth,
-    this.dropdown = false  
+    this.dropdown = false,
+    required this.isSmall,  
   });
 
   @override
@@ -45,18 +47,22 @@ class _DashBoardCardState extends State<DashBoardCard> {
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ListTile(
-            leading: CircleAvatar(
-              backgroundColor: widget.color,
-              child: Icon(
-                widget.icon,
-                size: 30,
-              ),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ListTile(
+                  leading: Icon(
+                    widget.icon,
+                    size: 30,
+                  ),
+                  title: Text(widget.title, style: widget.isSmall? Theme.of(context).textTheme.titleMedium : Theme.of(context).textTheme.titleLarge),
+                  subtitle: Text(widget.value, style: widget.isSmall? Theme.of(context).textTheme.displaySmall : Theme.of(context).textTheme.displayMedium,),
+                ),
+              ],
             ),
-            title: Text(widget.title, style: Theme.of(context).textTheme.titleLarge),
-            subtitle: Text(widget.value, style: Theme.of(context).textTheme.displayLarge,),
           ),
-          Spacer(),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -69,6 +75,7 @@ class _DashBoardCardState extends State<DashBoardCard> {
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.bold,
+                      fontSize: widget.isSmall? 12:14
                     ),
                   ),
                 ),
@@ -86,13 +93,21 @@ class _DashBoardCardState extends State<DashBoardCard> {
                       widget.growth! > 0?
                         Icon(ic_increase, color: Theme.of(context).colorScheme.secondary,)
                         : Icon(ic_decrase, color: Theme.of(context).colorScheme.error,),
-                      Text(" ${(widget.growth!.abs() * 100).toStringAsFixed(0)}%", style: TextStyle(color: widget.growth! > 0? Theme.of(context).colorScheme.onError : Theme.of(context).colorScheme.error),),
+                      Text(
+                        " ${(widget.growth!.abs() * 100).toStringAsFixed(0)}%", 
+                        style: TextStyle(
+                          color: widget.growth! > 0? 
+                            Theme.of(context).colorScheme.onError
+                            : Theme.of(context).colorScheme.error,
+                          fontSize: widget.isSmall? 12:14,
+                        ),
+                      ),
                     ],
                   ),
                 ),
             if (widget.dropdown)
               DropdownButton<String>(
-                style: Theme.of(context).textTheme.bodyLarge,
+                style: widget.isSmall? Theme.of(context).textTheme.bodySmall: Theme.of(context).textTheme.bodyMedium,
                 value: "Month",
                 items: ["Day", "Month", "Year"].map((String value) {
                   return DropdownMenuItem<String>(

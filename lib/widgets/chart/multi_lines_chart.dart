@@ -134,15 +134,15 @@ class _MultiLineChartState extends State<MultiLineChart> {
       }
       return SideTitleWidget(
         axisSide: meta.axisSide,
-        child: Text(text),
+        child: Text(text,),
       );
     },
   );
 
   SideTitles get _leftTitles => SideTitles(
+    reservedSize: 40,
     showTitles: true,
     getTitlesWidget: (value, meta) {
-      
       if (value % 1 == 0) {
         String text = "\$${value.toInt()}";
         return Text(value==0? text :text+"k");

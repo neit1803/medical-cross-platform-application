@@ -40,12 +40,12 @@ class _PieChartCard extends State<PieChartCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          flex: 2,
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.7,
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.7,
+      child: Row(
+        children: [
+          Expanded(
+            flex: 2,
             child: PieChart(
               PieChartData(
                 pieTouchData: PieTouchData(
@@ -64,28 +64,41 @@ class _PieChartCard extends State<PieChartCard> {
                 ),
                 borderData: FlBorderData(show: false),
                 sectionsSpace: 5,
-                centerSpaceRadius: MediaQuery.of(context).size.height * 0.25,
+                centerSpaceRadius: MediaQuery.of(context).size.height * 0.2,
                 sections: showingSections(),
               )
               
             ),
           ),
-        ),
-        Expanded(
-          flex: 1,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                PieChartLegend(values: values as List<double>, labels: labels as List<String>, colors: colors as List<Color>, totalValue: totalValue)
-              ],
+          Expanded(
+            flex: 1,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    PieChartLegend(
+                      values: values as List<double>, 
+                      labels: labels as List<String>, 
+                      colors: colors as List<Color>, 
+                      totalValue: totalValue, 
+                      touchedIndex: touchedIndex,
+                      onHover: (index) {
+                        setState(() {
+                          touchedIndex = index;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -93,7 +106,7 @@ class _PieChartCard extends State<PieChartCard> {
     return List.generate(values.length, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 16.0 : 0.0;
-      final radius = isTouched ? 60.0 : 50.0;
+      final radius = isTouched ? 40.0 : 30.0;
       const shadows = [Shadow(color: Colors.black, blurRadius: 2)];
       double percentage = values[i] / totalValue;
       return PieChartSectionData(

@@ -15,7 +15,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _isLightTheme = false; // Khởi tạo giá trị mặc định
+  bool _isLightTheme = false;
 
   Future<void> _loadThemePreference() async {
     final prefs = await SharedPreferences.getInstance();

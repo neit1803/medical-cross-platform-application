@@ -33,6 +33,7 @@ dependencies:
   intl: ^0.18.0
   expandable_page_view: ^1.0.17
   shared_preferences: ^2.3.3
+  flutter_layout_grid: ^2.0.0
   flutter:
     sdk: flutter
 
