@@ -40,64 +40,93 @@ class _PieChartCard extends State<PieChartCard> {
 
   @override
   Widget build(BuildContext context) {
+    final isSmall = MediaQuery.of(context).size.width < 1200;
+
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.7,
-      child: Row(
+      child: isSmall? 
+      Column(
         children: [
           Expanded(
             flex: 2,
-            child: PieChart(
-              PieChartData(
-                pieTouchData: PieTouchData(
-                  touchCallback: (FlTouchEvent event, pieTouchResponse) {
-                    setState(() {
-                      if (!event.isInterestedForInteractions ||
-                          pieTouchResponse == null ||
-                          pieTouchResponse.touchedSection == null) {
-                        touchedIndex = -1;
-                        return;
-                      }
-                      touchedIndex = pieTouchResponse
-                          .touchedSection!.touchedSectionIndex;
-                    });
-                  },
-                ),
-                borderData: FlBorderData(show: false),
-                sectionsSpace: 5,
-                centerSpaceRadius: MediaQuery.of(context).size.height * 0.2,
-                sections: showingSections(),
-              )
-              
+            child: _buildChart(MediaQuery.of(context).size.height * 0.1)
+          ),
+          Expanded(
+            flex: 1,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: _buildLegend(),
             ),
+          ),
+        ],
+      )
+      : Row(
+        children: [
+          Expanded(
+            flex: 2,
+            child: _buildChart(MediaQuery.of(context).size.height * 0.2)
           ),
           Expanded(
             flex: 1,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    PieChartLegend(
-                      values: values as List<double>, 
-                      labels: labels as List<String>, 
-                      colors: colors as List<Color>, 
-                      totalValue: totalValue, 
-                      touchedIndex: touchedIndex,
-                      onHover: (index) {
-                        setState(() {
-                          touchedIndex = index;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ),
+              child: _buildLegend(),
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildChart(spaceRadius) {
+    return PieChart(
+      PieChartData(
+        pieTouchData: PieTouchData(
+          touchCallback: (FlTouchEvent event, pieTouchResponse) {
+            setState(() {
+              if (!event.isInterestedForInteractions ||
+                  pieTouchResponse == null ||
+                  pieTouchResponse.touchedSection == null) {
+                touchedIndex = -1;
+                return;
+              }
+              touchedIndex = pieTouchResponse
+                  .touchedSection!.touchedSectionIndex;
+            });
+          },
+        ),
+        borderData: FlBorderData(show: false),
+        sectionsSpace: 5,
+        centerSpaceRadius: spaceRadius,
+        sections: showingSections(),
+      )
+      
+    );
+  }
+
+  Widget _buildLegend() {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            PieChartLegend(
+              values: values as List<double>, 
+              labels: labels as List<String>, 
+              colors: colors as List<Color>, 
+              totalValue: totalValue, 
+              touchedIndex: touchedIndex,
+              onHover: (index) {
+                setState(() {
+                  touchedIndex = index;
+                });
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -123,4 +152,6 @@ class _PieChartCard extends State<PieChartCard> {
       );
     });
   }
+
+  
 }

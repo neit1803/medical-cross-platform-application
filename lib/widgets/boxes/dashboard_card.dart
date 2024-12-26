@@ -10,6 +10,7 @@ class DashBoardCard extends StatefulWidget {
   bool dropdown = false;
   Color color;
   bool isSmall;
+  final VoidCallback onPressed;
 
   DashBoardCard({
     super.key, 
@@ -20,7 +21,8 @@ class DashBoardCard extends StatefulWidget {
     required this.color,
     this.growth,
     this.dropdown = false,
-    required this.isSmall,  
+    required this.isSmall, 
+    required this.onPressed,
   });
 
   @override
@@ -56,8 +58,18 @@ class _DashBoardCardState extends State<DashBoardCard> {
                     widget.icon,
                     size: 30,
                   ),
-                  title: Text(widget.title, style: widget.isSmall? Theme.of(context).textTheme.titleMedium : Theme.of(context).textTheme.titleLarge),
-                  subtitle: Text(widget.value, style: widget.isSmall? Theme.of(context).textTheme.displaySmall : Theme.of(context).textTheme.displayMedium,),
+                  title: Text(
+                    widget.title, 
+                    style: widget.isSmall? Theme.of(context).textTheme.titleMedium : Theme.of(context).textTheme.titleLarge,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+                  subtitle: Text(
+                    widget.value, 
+                    style: widget.isSmall? Theme.of(context).textTheme.displaySmall : Theme.of(context).textTheme.displayMedium,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
                 ),
               ],
             ),
@@ -69,20 +81,20 @@ class _DashBoardCardState extends State<DashBoardCard> {
               Align(
                 alignment: Alignment.bottomRight,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: widget.onPressed,
                   child: Text(
                     "View All   >",
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.bold,
-                      fontSize: widget.isSmall? 12:14
+                      fontSize: widget.isSmall? 8:12
                     ),
                   ),
                 ),
               ),
             if (widget.growth != null)
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                padding: EdgeInsets.symmetric(horizontal: widget.isSmall? 4:8, vertical: widget.isSmall? 2:4),
                   decoration: BoxDecoration(
                     color: widget.growth! > 0? Colors.green[100]: Colors.red[100],
                     borderRadius: BorderRadius.circular(12),
@@ -91,15 +103,15 @@ class _DashBoardCardState extends State<DashBoardCard> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       widget.growth! > 0?
-                        Icon(ic_increase, color: Theme.of(context).colorScheme.secondary,)
-                        : Icon(ic_decrase, color: Theme.of(context).colorScheme.error,),
+                        Icon(ic_increase, color: Theme.of(context).colorScheme.secondary, size: widget.isSmall? 12: 14,)
+                        : Icon(ic_decrase, color: Theme.of(context).colorScheme.error, size: widget.isSmall? 12: 14),
                       Text(
                         " ${(widget.growth!.abs() * 100).toStringAsFixed(0)}%", 
                         style: TextStyle(
                           color: widget.growth! > 0? 
                             Theme.of(context).colorScheme.onError
                             : Theme.of(context).colorScheme.error,
-                          fontSize: widget.isSmall? 12:14,
+                          fontSize: widget.isSmall? 10:12,
                         ),
                       ),
                     ],
@@ -107,12 +119,11 @@ class _DashBoardCardState extends State<DashBoardCard> {
                 ),
             if (widget.dropdown)
               DropdownButton<String>(
-                style: widget.isSmall? Theme.of(context).textTheme.bodySmall: Theme.of(context).textTheme.bodyMedium,
                 value: "Month",
                 items: ["Day", "Month", "Year"].map((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
-                    child: Text(value),
+                    child: Text(value, style: widget.isSmall? TextStyle(fontSize: 10): TextStyle(fontSize: 12),),
                   );
                 }).toList(),
                 onChanged: (_) {},

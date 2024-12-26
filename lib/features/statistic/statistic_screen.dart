@@ -17,7 +17,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: CustomAppBar(showSearchBar: false, isLightTheme: widget.isLightTheme, onThemeToggle: (value){},),
+      appBar: CustomAppBar(showSearchBar: false, isLightTheme: widget.isLightTheme, onThemeToggle: (value){}, isSmall: MediaQuery.of(context).size.width < 1200,),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         child: FutureBuilder<Map<String, dynamic>>(
@@ -27,6 +27,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
               return const Center(child: CircularProgressIndicator());
             }
             if (snapshot.hasError) {
+              print(snapshot.data);
               return Center(child: Text('Error: ${snapshot.error}'));
             }
             if (snapshot.hasData) {

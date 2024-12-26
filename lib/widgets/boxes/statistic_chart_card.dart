@@ -99,6 +99,8 @@ class _StatisticChartCardState extends State<StatisticChartCard> {
 
   @override
   Widget build(BuildContext context) {
+    final isSmall = MediaQuery.of(context).size.width < 1200;
+
     return MouseRegion(
       onHover: (event) {
         final hoverX = event.localPosition.dx;
@@ -141,7 +143,8 @@ class _StatisticChartCardState extends State<StatisticChartCard> {
                       children: [
                         Text(
                           "$prefHeader ${surfHeaders[currIdx]}",
-                          style: Theme.of(context).textTheme.displayMedium,
+                          style: isSmall? Theme.of(context).textTheme.displaySmall : Theme.of(context).textTheme.displayMedium,
+                          maxLines: 1,
                         ),
                         Spacer(),
                         IconButton(

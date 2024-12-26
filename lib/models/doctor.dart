@@ -1,5 +1,6 @@
 class Doctor {
   String _color;
+  final String? id;
   final double value;
   final String title;
   final String ghichu;
@@ -11,6 +12,7 @@ class Doctor {
 
   Doctor({
     required String color,
+    this.id = "",
     required this.value,
     required this.title,
     required this.ghichu,
@@ -30,6 +32,7 @@ class Doctor {
   factory Doctor.fromJson(Map<String, dynamic> json) {
     return Doctor(
       color: json['color'],
+      id: json['id'],
       value: json['value'],
       title: json['title'],
       ghichu: json['ghichu'],

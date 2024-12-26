@@ -33,6 +33,8 @@ class Indicator extends StatelessWidget {
         Text(
           text,
           style:Theme.of(context).textTheme.labelMedium,
+          maxLines: 1, 
+          overflow: TextOverflow.ellipsis, 
         )
       ],
     );

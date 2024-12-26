@@ -5,20 +5,20 @@ import 'package:flutter_application_1/widgets/chart/multi_lines_chart.dart';
 
 class RevenueChart extends StatefulWidget {
   bool isLightTheme;
+  bool isSmall;
   BuildContext context;
-  RevenueChart({super.key, required this.context, required this.isLightTheme});
+  
+  RevenueChart({super.key, required this.context, required this.isLightTheme, required this.isSmall});
 
   @override
   State<RevenueChart> createState() => _RevenueChartState();
 }
 
 class _RevenueChartState extends State<RevenueChart> {
-
-  
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.all(widget.isSmall? 8:16),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
@@ -36,7 +36,13 @@ class _RevenueChartState extends State<RevenueChart> {
           ListTile(
             title: Row(
               children: [
-                Text("Revenue analytics", style: Theme.of(context).textTheme.displayLarge,),
+                Text(
+                  "Revenue analytics",
+                  style: TextStyle(
+                    fontSize: widget.isSmall? 16:20,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
                 Spacer(),
                 TextButton(
                   onPressed: (){
@@ -48,6 +54,7 @@ class _RevenueChartState extends State<RevenueChart> {
                   child: Text(
                     "View Details   >",
                     style: TextStyle(
+                      fontSize: widget.isSmall? 8: 14,
                       color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.bold,
                     ),
@@ -56,12 +63,11 @@ class _RevenueChartState extends State<RevenueChart> {
               ],
             ),
             trailing: DropdownButton<String>(
-              style: Theme.of(context).textTheme.bodyLarge,
               value: "Month",
               items: ["Day", "Month", "Year"].map((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
-                  child: Text(value),
+                  child: Text(value, style: TextStyle(fontSize: widget.isSmall? 8:14),),
                 );
               }).toList(),
               onChanged: (_) {},

@@ -134,13 +134,13 @@ class _MultiLineChartState extends State<MultiLineChart> {
       }
       return SideTitleWidget(
         axisSide: meta.axisSide,
-        child: Text(text,),
+        child: Text(text, style: TextStyle(fontSize: 12),),
       );
     },
   );
 
   SideTitles get _leftTitles => SideTitles(
-    reservedSize: 40,
+    reservedSize: 30,
     showTitles: true,
     getTitlesWidget: (value, meta) {
       if (value % 1 == 0) {

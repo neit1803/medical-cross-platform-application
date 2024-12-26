@@ -5,9 +5,10 @@ import 'package:flutter_application_1/widgets/appbar/search_bar.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
   bool showSearchBar;
   bool isLightTheme;
+  bool isSmall;
   final Function(bool) onThemeToggle;
 
-  CustomAppBar({super.key, this.showSearchBar = true, required this.isLightTheme, required this.onThemeToggle});
+  CustomAppBar({super.key, this.showSearchBar = true, required this.isLightTheme, required this.onThemeToggle, required this.isSmall});
 
   @override
   // TODO: implement preferredSize
@@ -29,16 +30,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
           actions: [
             IconButton(onPressed: (){}, icon: Icon(ic_notifi), color: Theme.of(context).colorScheme.onSurface,),
             InkWell(
-              child: Row(        
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right:8.0),
-                    child: CircleAvatar(
-                      radius: 24,
-                      backgroundColor: Colors.white,
-                      backgroundImage: NetworkImage('https://cdn.create.vista.com/api/media/medium/211941270/stock-photo-beautiful-adult-female-doctor-stethoscope-neck-using-digital-tablet-looking?token='),
-                    ),
+            child: Row(        
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right:8.0),
+                  child: CircleAvatar(
+                    radius: 24,
+                    backgroundColor: Colors.white,
+                    backgroundImage: NetworkImage('https://cdn.create.vista.com/api/media/medium/211941270/stock-photo-beautiful-adult-female-doctor-stethoscope-neck-using-digital-tablet-looking?token='),
                   ),
+                ),
+                !isSmall?
                   Column(
                     // mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,11 +49,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
                       Text("Mark Ferdinand", style: Theme.of(context).textTheme.titleMedium,),
                       Text("mkferdinand@gmail.com", style: Theme.of(context).textTheme.labelLarge,),
                     ],
-                  ),
-                ],
-              ),
-              onTap: () {},
+                  )
+                  : Container(),
+              ],
             ),
+            onTap: () {},
+          )
           ],
           shape: RoundedRectangleBorder(
             borderRadius:  BorderRadius.all(Radius.circular(12)),

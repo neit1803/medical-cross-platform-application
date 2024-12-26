@@ -29,11 +29,12 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   fl_chart: ^0.69.0
-  multi_split_view: ^3.6.0
   intl: ^0.18.0
   expandable_page_view: ^1.0.17
   shared_preferences: ^2.3.3
   flutter_layout_grid: ^2.0.0
+  collection: ^1.17.1
+  table_calendar: ^3.0.9
   flutter:
     sdk: flutter
 

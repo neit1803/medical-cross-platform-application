@@ -69,8 +69,20 @@ class _PieChartLegendState extends State<PieChartLegend> {
                         isSquare: true,
                       ),
                     ),
-                    Expanded(flex: 1, child: Text(formatVND(widget.values[index].toInt()), style:  fontStyle,)),
-                    Expanded(flex: 1, child: Text('$percentage%', style: fontStyle,)),
+                    Expanded(
+                      flex: 1, 
+                      child: Text(
+                        formatVND(widget.values[index].toInt()),
+                        style:  fontStyle,
+                      )
+                    ),
+                    Expanded(
+                      flex: 1, 
+                      child: Text(
+                        '$percentage%', 
+                        style: fontStyle,
+                      )
+                    ),
                   ],
                 ),
               ),

@@ -76,7 +76,7 @@ class ApiService {
 
   static List<dynamic> getRevenueByPerformingDoctorList(Map data) {
     final rawData = data['dsdoanhthutheobsthuchien'];
-   final List<dynamic> serviceList = rawData is String ? jsonDecode(rawData) : rawData;
+    final List<dynamic> serviceList = rawData is String ? jsonDecode(rawData) : rawData;
     return serviceList
         .map((item) => Doctor.fromJson(item as Map<String, dynamic>))
         .toList();

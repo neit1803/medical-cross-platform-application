@@ -150,43 +150,46 @@ class _BarChartCardState extends State<BarChartCard> {
     return SizedBox(
       width: legendCardWidth,
       child: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            BarChartLegend(
-              colors: isExpanded ? colors : colors.sublist(0, visibleItems),
-              labels: isExpanded ? labels : labels.sublist(0, visibleItems),
-              values: isExpanded ? values : values.sublist(0, visibleItems),
-              totalValue: totalValue,
-              touchedIndex: touchedIndex,
-              onHover: _handleLegendHover,
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Expanded(
-                  child: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        isExpanded = !isExpanded;
-                      });
-                    }, 
-                    icon: Icon(isExpanded? ic_arrow_up : ic_arrow_down),
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.resolveWith((states) { 
-                        return const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(0), // top corner square
-                            bottom: Radius.circular(18), // bottom corner rounded
-                          ),
-                        );
-                      }),
+        child: AspectRatio(
+          aspectRatio: 0.1,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              BarChartLegend(
+                colors: isExpanded ? colors : colors.sublist(0, visibleItems),
+                labels: isExpanded ? labels : labels.sublist(0, visibleItems),
+                values: isExpanded ? values : values.sublist(0, visibleItems),
+                totalValue: totalValue,
+                touchedIndex: touchedIndex,
+                onHover: _handleLegendHover,
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Expanded(
+                    child: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          isExpanded = !isExpanded;
+                        });
+                      }, 
+                      icon: Icon(isExpanded? ic_arrow_up : ic_arrow_down),
+                      style: ButtonStyle(
+                        shape: MaterialStateProperty.resolveWith((states) { 
+                          return const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(0), // top corner square
+                              bottom: Radius.circular(18), // bottom corner rounded
+                            ),
+                          );
+                        }),
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),     
-          ],
+                ],
+              ),     
+            ],
+          ),
         ),
       ),
     );
@@ -203,7 +206,7 @@ class _BarChartCardState extends State<BarChartCard> {
         barRods: [
           BarChartRodData(
             toY: toY,
-            width: 50,
+            width: MediaQuery.of(context).size.width < 1200? 10 : 50,
             color: colors[index],
             borderRadius: BorderRadius.zero,
           ),
