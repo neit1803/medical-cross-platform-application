@@ -6,4 +6,16 @@ class ApiClient {
     final url = Uri.parse(ApiEndpoints.getFullUrl(endpoint));
     return await http.get(url);
   }
+
+  static Future<http.Response> getCustomBase(String endpoint) async {
+    final url = Uri.parse(ApiEndpoints.getFullCustomUrl(endpoint));
+    return await http.get(
+      url,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        'Content-Type': 'application/json',
+        'Accept': '*/*'
+      },
+    );
+  }
 }

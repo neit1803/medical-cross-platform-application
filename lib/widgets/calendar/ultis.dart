@@ -11,12 +11,12 @@ final _kEventSource = {
   for (var item in List.generate(50, (index) => index))
     DateTime.utc(kFirstDay.year, kFirstDay.month, item * 5): List.generate(
       item % 4 + 1,
-      (index) => WorkingShift('Event $item | ${index + 1}'),
+      (index) => WorkingShift(doctorName: "", room: "", date: "", startShift:"", endShift:"",title: 'Event $item | ${index + 1}'),
     ),
 }..addAll({
     kToday: [
-      const WorkingShift("Today's Event 1"),
-      const WorkingShift("Today's Event 2"),
+      WorkingShift(doctorName: "", room: "", date: "", startShift:"", endShift:"",title:"Today's Event 1"),
+      WorkingShift(doctorName: "", room: "", date: "", startShift:"", endShift:"",title:"Today's Event 2"),
     ],
   });
 

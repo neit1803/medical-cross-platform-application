@@ -1,6 +1,6 @@
 class WorkingShift {
-  final String id;
-  final String doctor_name;
+  final String? id;
+  final String doctorName;
   final String room;
   final String date;
   final String startShift;
@@ -8,8 +8,8 @@ class WorkingShift {
   final String? title;
   
   WorkingShift({
-    required this.id,
-    required this.doctor_name,
+    this.id = "",
+    required this.doctorName,
     this.title = "",
     required this.room,
     required this.date,
@@ -20,7 +20,7 @@ class WorkingShift {
   factory WorkingShift.fromJson(Map<String, dynamic> json) {
     return WorkingShift(
       id: json['id'],
-      doctor_name: json['doctor_name'],
+      doctorName: json['doctorName'],
       title: json['title'],
       room: json['room'],
       date: json['date'],

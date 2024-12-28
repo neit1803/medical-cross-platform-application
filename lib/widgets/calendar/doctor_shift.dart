@@ -1,16 +1,20 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/config/app_constants.dart';
 import 'package:flutter_application_1/models/working_shift.dart';
+import 'package:flutter_application_1/services/api_service.dart';
+import 'package:flutter_application_1/services/chart_service.dart';
 import 'package:flutter_application_1/widgets/calendar/calendar_header.dart';
 import 'package:flutter_application_1/widgets/calendar/ultis.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class DoctorShiftCalendar extends StatefulWidget {
+  String? doctorName;
   bool isFullScreen;
   bool isLightTheme;
-  DoctorShiftCalendar({super.key, required this.isFullScreen, required this.isLightTheme});
+  DoctorShiftCalendar({super.key, required this.isFullScreen, required this.isLightTheme, this.doctorName = ""}); 
 
   @override
   State<DoctorShiftCalendar> createState() => _DoctorShiftCalendarState();
@@ -30,12 +34,17 @@ class _DoctorShiftCalendarState extends State<DoctorShiftCalendar> {
   RangeSelectionMode _rangeSelectionMode = RangeSelectionMode.toggledOff;
   DateTime? _rangeStart;
   DateTime? _rangeEnd;
-  
+
+  List<WorkingShift> _workingShifts = [];
+
   bool get canClearSelection =>
       _selectedDays.isNotEmpty || _rangeStart != null || _rangeEnd != null;
 
   List<WorkingShift> _getEventsForDay(DateTime day) {
-    return kEvents[day] ?? [];
+    return _workingShifts.where((shift) {
+      DateTime shiftDate = DateTime.parse(shift.date);
+      return isSameDay(shiftDate, day);
+    }).toList();
   }
 
   List<WorkingShift> _getEventsForDays(Iterable<DateTime> days) {
@@ -81,11 +90,24 @@ class _DoctorShiftCalendarState extends State<DoctorShiftCalendar> {
     }
   }
 
+  Future<void> _loadWorkingShifts() async {
+    try {
+      _workingShifts = 
+        widget.doctorName == "" ? 
+        await ApiService.fetchWorkingShifts() 
+        :await ApiService.fetchWorkingShiftsByDoctor(widget.doctorName!);
+        
+      _selectedEvents.value = _getEventsForDay(_focusedDay.value);
+    } catch (e) {
+      print("Error fetching working shifts: $e");
+    }
+  }
+
   @override
   void initState() {
     super.initState();
-    _selectedDays.add(_focusedDay.value);
-    _selectedEvents = ValueNotifier(_getEventsForDay(_focusedDay.value));
+    _selectedEvents = ValueNotifier([]);
+    _loadWorkingShifts();
   }
 
   @override
@@ -98,7 +120,6 @@ class _DoctorShiftCalendarState extends State<DoctorShiftCalendar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // padding: EdgeInsets.all(widget.isSmall? 8:16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
@@ -159,10 +180,7 @@ class _DoctorShiftCalendarState extends State<DoctorShiftCalendar> {
               rangeEndDay: _rangeEnd,
               calendarFormat: _calendarFormat,
               rangeSelectionMode: _rangeSelectionMode,
-              eventLoader: _getEventsForDay,
-              // holidayPredicate: (day) {
-              //   return day.day == 20;
-              // },
+              eventLoader: (day) => _getEventsForDay(day),
               onDaySelected: _onDaySelected,
               onRangeSelected: _onRangeSelected,
               onCalendarCreated: (controller) => _pageController = controller,
@@ -254,27 +272,36 @@ class _DoctorShiftCalendarState extends State<DoctorShiftCalendar> {
               ),
             ),
           ),
-          SizedBox(height: widget.isFullScreen? 0: 30),
+          const SizedBox(height: 12.0),
           if (!widget.isFullScreen)
             Expanded(
               child: ValueListenableBuilder<List<WorkingShift>>(
                 valueListenable: _selectedEvents,
                 builder: (context, value, _) {
+                  List<Color> colors = generateDistinctColors(value.length).map((e) => ChartService.parseColor(e),).toList();
                   return ListView.builder(
                     itemCount: value.length,
                     itemBuilder: (context, index) {
+                      WorkingShift  ws = value[index];
                       return Container(
                         margin: const EdgeInsets.symmetric(
                           horizontal: 12.0,
                           vertical: 4.0,
                         ),
-                        decoration: BoxDecoration(
-                          border: Border.all(),
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                        child: ListTile(
-                          onTap: () => print('${value[index]}'),
-                          title: Text('${value[index]}'),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 10,
+                              height: 10,
+                              margin: const EdgeInsets.all(8.0),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: colors[index],
+                              ),
+                            ),
+                            const SizedBox(width: 8.0),
+                            Text('${ws.startShift} - ${ws.endShift} (${ws.room}): ${ws.doctorName}'),
+                          ],
                         ),
                       );
                     },

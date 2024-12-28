@@ -43,4 +43,8 @@ class Doctor {
       ten1: json['ten1'],
     );
   }
+
+  List<Doctor> parseDoctors(List<dynamic> jsonData) {
+    return jsonData.map((json) => Doctor.fromJson(json)).toList();
+  }
 }

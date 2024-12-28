@@ -27,7 +27,6 @@ class _StatisticScreenState extends State<StatisticScreen> {
               return const Center(child: CircularProgressIndicator());
             }
             if (snapshot.hasError) {
-              print(snapshot.data);
               return Center(child: Text('Error: ${snapshot.error}'));
             }
             if (snapshot.hasData) {

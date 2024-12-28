@@ -2,6 +2,7 @@ import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/config/app_icons.dart';
 import 'package:flutter_application_1/models/appointment.dart';
+import 'package:flutter_application_1/services/api_service.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:intl/intl.dart';
 import 'package:collection/collection.dart';
@@ -20,21 +21,21 @@ class _MeetingCardState extends State<MeetingCard> {
   int currIdx = 0;
   int formatedSz = 0;
   DateTime date = DateTime.now();
-  late List<Appointment> rawData;
+  List<Appointment> appointments = [];
   List<List<Appointment>> formatedData = List.generate(2, (_) => []);
   
   late PageController _pageController;
 
-  void setDataSet(){
-    rawData = [
-      Appointment(id: "1", title: "Patient A Regular Checkup", dateTime: DateTime.parse('2024-12-23 20:18:04Z')),
-      Appointment(id: "2", title: "Patient B Follow-up Visit", dateTime: DateTime.parse('2024-03-21 08:18:04Z')),
-      Appointment(id: "3", title: "Patient C Specialist Consultation", dateTime: DateTime.parse('2024-12-20 13:18:04Z')),
-      Appointment(id: "4", title: "Patient D Vaccination Appointment", dateTime: DateTime.parse('2019-01-12 15:18:04Z')),
-      Appointment(id: "5", title: "Patient D Vaccination Appointment", dateTime: DateTime.parse('2019-01-12 15:18:04Z')),
-      Appointment(id: "6", title: "Patient D Vaccination Appointment", dateTime: DateTime.parse('2019-01-12 15:18:04Z')),
-    ];
-    formatedData = rawData.slices(4).toList();
+  Future<void> fetchAppointments() async {
+    try {
+      List<Appointment> fetchedAppointments = await ApiService.fetchAppointmentsByDate(date);
+      setState(() {
+        appointments = fetchedAppointments;
+        formatedData = appointments.slices(4).toList();
+      });
+    } catch (e) {
+      print('Failed to fetch appointments: $e');
+    }
   }
 
   void _goToPreviousPage() {
@@ -81,8 +82,9 @@ class _MeetingCardState extends State<MeetingCard> {
       if (pickedDate != null && pickedDate != date) {
         setState(() {
           date = pickedDate;
+          currIdx=0;
         });
-        print(date);
+        await fetchAppointments();
       }
     }
 
@@ -96,7 +98,7 @@ class _MeetingCardState extends State<MeetingCard> {
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: currIdx);
-    setDataSet();
+    fetchAppointments();
   }
 
   @override
@@ -171,7 +173,7 @@ class _MeetingCardState extends State<MeetingCard> {
                   : Container(),
                 const Spacer(),
                 IconButton(        
-                  onPressed: (){rawData.isNotEmpty? _goToPreviousPage() : null;}, 
+                  onPressed: (){appointments.isNotEmpty? _goToPreviousPage() : null;}, 
                   icon: const Icon(ic_arrow_left),
                   color: Colors.grey[500],  
                   style: ButtonStyle(
@@ -185,7 +187,7 @@ class _MeetingCardState extends State<MeetingCard> {
                 ),
                 const SizedBox(width: 5,),
                 IconButton(
-                  onPressed: (){rawData.isNotEmpty? _goToNextPage() : null;}, 
+                  onPressed: (){appointments.isNotEmpty? _goToNextPage() : null;}, 
                   icon: const Icon(ic_arrow_right),
                   color: Colors.grey[500],    
                   style: ButtonStyle(
@@ -200,7 +202,7 @@ class _MeetingCardState extends State<MeetingCard> {
               ],
             ),
             const SizedBox(height: 20,),
-            rawData.isNotEmpty?
+            appointments.isNotEmpty?
             Expanded(
               child: SingleChildScrollView(
                 child: ExpandablePageView.builder(
@@ -276,12 +278,13 @@ class _MeetingCardState extends State<MeetingCard> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Text(
-                                              "${formatedData[currIdx][index].dateTime.hour}:${formatedData[currIdx][index].dateTime.minute}",
+                                              // Sử dụng định dạng 24 giờ
+                                              DateFormat('HH:mm').format(formatedData[currIdx][index].dateTime),
                                               maxLines: 1,
                                               overflow: TextOverflow.ellipsis, 
                                               style: TextStyle(
                                                 color: Colors.grey.shade500,
-                                                fontSize: widget.isSmall? 12:16,
+                                                fontSize: widget.isSmall ? 12 : 16,
                                               ),
                                             ),
                                           ],

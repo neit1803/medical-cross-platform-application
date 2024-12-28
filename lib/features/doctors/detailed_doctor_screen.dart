@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/doctor.dart';
+import 'package:flutter_application_1/services/api_service.dart';
 import 'package:flutter_application_1/widgets/appbar/app_bar.dart';
+import 'package:flutter_application_1/widgets/calendar/doctor_shift.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 class DetaileDoctorScreen extends StatefulWidget {
-  List<Map> rawData;
+  List<Doctor> rawData;
   bool isLightTheme;
   bool isSmall;
 
@@ -15,28 +17,45 @@ class DetaileDoctorScreen extends StatefulWidget {
 }
 
 class _DetaileDoctorScreenState extends State<DetaileDoctorScreen> {
-  List<Doctor> doctors = [];
-
-  void mapToObj() {
-    doctors = widget.rawData
-        .map((item) => Doctor.fromJson(Map<String, dynamic>.from(item)))
-        .toList();
-  }
+  late Future<List<Doctor>> futureDoctors;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    mapToObj();
+    futureDoctors = ApiService.fetchDoctors();
   }
+
+  void _showDoctorWorkingShifts(Doctor doctor) {
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height * 0.6,
+            width: MediaQuery.of(context).size.width * 0.4,
+            child: DoctorShiftCalendar(
+              doctorName: doctor.ten,
+              isLightTheme: widget.isLightTheme,
+              isFullScreen: false, 
+            ),
+          ),
+        );
+      },
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    int columnCount = widget.isSmall? 1 : 4;
+    int columnCount = widget.isSmall ? 1 : 4;
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: CustomAppBar(showSearchBar: false, isLightTheme: widget.isLightTheme, onThemeToggle: (value){}, isSmall: widget.isSmall,),
+      appBar: CustomAppBar(showSearchBar: false, isLightTheme: widget.isLightTheme, onThemeToggle: (value) {}, isSmall: widget.isSmall),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         child: Padding(
@@ -46,9 +65,11 @@ class _DetaileDoctorScreenState extends State<DetaileDoctorScreen> {
               columnGap: 30,
               rowGap: 30,
               columnSizes: List.generate(columnCount, (_) => 1.fr),
-              rowSizes: List.generate((doctors.length / columnCount).ceil(), (_) => auto),
-                children: List.generate(doctors.length, (index) {
-                  return Container(
+              rowSizes: List.generate((widget.rawData.length / columnCount).ceil(), (_) => auto),
+              children: List.generate(widget.rawData.length, (index) {
+                return GestureDetector(
+                  onTap: () => _showDoctorWorkingShifts(widget.rawData[index]), 
+                  child: Container(
                     decoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.surface,
                       borderRadius: BorderRadius.circular(12),
@@ -68,18 +89,18 @@ class _DetaileDoctorScreenState extends State<DetaileDoctorScreen> {
                           Expanded(
                             flex: 2,
                             child: Image.network(
-                              "https://avatar.iran.liara.run/public/${(index % 100) + 1}}"
+                              "https://avatar.iran.liara.run/public/${(index % 100) + 1}",
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
                               children: [
+                                Text('${widget.rawData[index].ten}'),
                                 Text(
-                                  '${doctors[index].ten}',
-                                ),
-                                Text(
-                                  doctors[index].loai == 'bschidinh'? 'Bác Sĩ Chỉ Định' : "Bác Sĩ Thực Hiện",
+                                  widget.rawData[index].loai == 'bschidinh'
+                                      ? 'Bác Sĩ Chỉ Định'
+                                      : 'Bác Sĩ Thực Hiện',
                                 ),
                               ],
                             ),
@@ -87,10 +108,11 @@ class _DetaileDoctorScreenState extends State<DetaileDoctorScreen> {
                         ],
                       ),
                     ),
-                  );
-                }),
+                  ),
+                );
+              }),
             ),
-          ),
+          )
         ),
       ),
     );
