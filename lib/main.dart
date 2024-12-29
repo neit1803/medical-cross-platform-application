@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_application_1/features/appointment/bloc/appointment_bloc.dart';
 import 'package:flutter_application_1/config/app_constants.dart';
-import 'package:flutter_application_1/features/home/home_screen.dart';
+import 'package:flutter_application_1/screens/home/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    BlocProvider(
+      create: (_) => AppointmentBloc(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -39,7 +46,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Medical Cross-Platform Application',
       theme: _isLightTheme ? lightTheme : darkTheme,
       home: HomeScreen(
         onThemeChanged: (bool isLightTheme) async {

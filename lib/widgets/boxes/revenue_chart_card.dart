@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/config/app_constants.dart';
-import 'package:flutter_application_1/features/statistic/statistic_screen.dart';
+import 'package:flutter_application_1/screens/statistic/statistic_screen.dart';
 import 'package:flutter_application_1/widgets/chart/multi_lines_chart.dart';
 
 class RevenueChart extends StatefulWidget {

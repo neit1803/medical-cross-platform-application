@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/features/schedule/doctor_shift_screen.dart';
+import 'package:flutter_application_1/screens/schedule/doctor_shift_screen.dart';
 import 'package:intl/intl.dart';
 
 class CalendarHeader extends StatelessWidget {

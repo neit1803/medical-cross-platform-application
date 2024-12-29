@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/config/app_icons.dart';
-import 'package:flutter_application_1/features/doctors/detailed_doctor_screen.dart';
+import 'package:flutter_application_1/screens/doctors/detailed_doctor_screen.dart';
 import 'package:flutter_application_1/models/doctor.dart';
 import 'package:flutter_application_1/services/api_service.dart';
 import 'package:http/http.dart' as http;

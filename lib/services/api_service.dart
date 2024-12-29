@@ -115,7 +115,7 @@ class ApiService {
     }
   }
 
-  static Future<List<Appointment>> fetchAppointments() async {
+  Future<List<Appointment>> fetchAppointments() async {
     try {
       final response = await RevenueAPI.fetchAppointments();
       if (response.statusCode == 200) {
