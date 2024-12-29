@@ -40,19 +40,6 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
   
-  Future<void> fetchAppointments() async {
-    try {
-      final response = await http.get(Uri.parse('https://api.mocki.io/v1/7b3f3f7b'));
-      if (response.statusCode == 200) {
-        print(response.body);
-      } else {
-        print('Failed to fetch appointments');
-      }
-    } catch (e) {
-      print('Failed to fetch appointments: $e');
-    }
-  }
-  
   @override
   void initState() {
     super.initState();
@@ -73,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
         "onPressed": () {
           Navigator.push(
             context, 
-            MaterialPageRoute(builder: (context) => DetaileDoctorScreen(isLightTheme: widget.isLightTheme, isSmall: isSmall, rawData: doctors,),),
+            MaterialPageRoute(builder: (context) => DetaileDoctorScreen(isLightTheme: widget.isLightTheme, isSmall: isSmall,),),
           );
         },
       },

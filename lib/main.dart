@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/features/doctor/bloc/doctor_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_application_1/features/appointment/bloc/appointment_bloc.dart';
 import 'package:flutter_application_1/config/app_constants.dart';
@@ -7,11 +8,20 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(
-    BlocProvider(
-      create: (_) => AppointmentBloc(),
+  MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => AppointmentBloc(),
+          child: MyApp(),
+        ),
+        BlocProvider(
+          create: (_) => DoctorBloc(),
+          child: MyApp(),
+        ),
+      ],
       child: MyApp(),
     ),
-  );
+  );  
 }
 
 class MyApp extends StatefulWidget {
